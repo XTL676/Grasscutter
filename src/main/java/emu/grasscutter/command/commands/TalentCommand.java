@@ -14,7 +14,7 @@ import java.util.List;
 
 import static emu.grasscutter.utils.Language.translate;
 
-@Command(label = "talent", usage = "talent <talentID> <value>", permission = "player.settalent", permissionTargeted = "player.settalent.others", description = "commands.talent.description")
+@Command(label = "talent", usage = "talent <talentId> <value>", permission = "player.settalent", permissionTargeted = "player.settalent.others", description = "commands.talent.description")
 public final class TalentCommand implements CommandHandler {
     private void setTalentLevel(Player sender, Player player, Avatar avatar, int talentId, int talentLevel) {
         int oldLevel = avatar.getSkillLevelMap().get(talentId);
@@ -45,11 +45,6 @@ public final class TalentCommand implements CommandHandler {
 
     @Override
     public void execute(Player sender, Player targetPlayer, List<String> args) {
-        if (targetPlayer == null) {
-            CommandHandler.sendMessage(sender, translate(sender, "commands.execution.need_target"));
-            return;
-        }
-
         if (args.size() < 1){
             CommandHandler.sendMessage(sender, translate(sender, "commands.talent.usage_1"));
             CommandHandler.sendMessage(sender, translate(sender, "commands.talent.usage_2"));
